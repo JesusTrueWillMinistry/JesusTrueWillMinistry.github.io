@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jesus True Will Ministry — Uthiru, Kenya</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&amp;family=Outfit:wght@300;400;500;600;700;800&amp;family=Lora:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { box-sizing: border-box; }
+    .font-heading { font-family: 'Playfair Display', Georgia, serif; }
+    .font-body { font-family: 'Outfit', sans-serif; }
+    .font-accent { font-family: 'Lora', serif; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    @keyframes cross-glow {
+      0%, 100% { text-shadow: 0 0 10px rgba(255,215,0,0.5); }
+      50% { text-shadow: 0 0 30px rgba(255,215,0,0.9), 0 0 60px rgba(255,215,0,0.4); }
+    }
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+      50% { box-shadow: 0 0 40px rgba(255,215,0,0.6); }
+    }
+
+    .anim-fade-up { animation: fadeUp 0.8s ease-out forwards; opacity: 0; }
+    .anim-fade-in { animation: fadeIn 1s ease-out forwards; opacity: 0; }
+    .anim-slide-left { animation: slideInLeft 0.8s ease-out forwards; opacity: 0; }
+    .anim-slide-right { animation: slideInRight 0.8s ease-out forwards; opacity: 0; }
+    .anim-float { animation: float 3s ease-in-out infinite; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+    .delay-7 { animation-delay: 0.7s; }
+    .delay-8 { animation-delay: 0.8s; }
+
+    .cross-glow { animation: cross-glow 3s ease-in-out infinite; }
+    .pulse-ring { animation: pulse-ring 2s ease-in-out infinite; }
+    .gold-shimmer {
+      background: linear-gradient(90deg, #FFD700, #FFF8DC, #FFD700, #B8860B, #FFD700);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 4s linear infinite;
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #FFD700, #FFF8DC);
+      transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+    .card-hover {
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s, border-color 0.4s;
+    }
+    .card-hover:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px rgba(255,215,0,0.15);
+      border-color: rgba(255,215,0,0.4);
+    }
+
+    .btn-glow:hover { animation: pulse-ring 1.5s ease-in-out infinite; }
+
+    .hero-pattern {
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(255,215,0,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,215,0,0.06) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(255,215,0,0.08) 0%, transparent 45%);
+    }
+
+    .section-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.4), transparent);
+    }
+
+    .prayer-card { transition: all 0.3s; }
+    .prayer-card:hover { background: rgba(255,215,0,0.1); transform: translateX(8px); }
+
+    .mobile-menu { transition: transform 0.3s ease-in-out, opacity 0.3s; }
+    .mobile-menu.hidden-menu { transform: translateX(100%); opacity: 0; pointer-events: none; }
+    .mobile-menu.show-menu { transform: translateX(0); opacity: 1; pointer-events: auto; }
+
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, #FFD700, #FFF8DC); z-index: 100;
+      transition: width 0.1s;
+      box-shadow: 0 0 20px rgba(255,215,0,0.4);
+    }
+
+    .toast-container {
+      position: fixed; bottom: 20px; right: 20px; z-index: 200;
+    }
+    .toast {
+      padding: 14px 24px; border-radius: 12px; color: #0F172A; font-weight: 600;
+      background: linear-gradient(135deg, #FFD700, #FFF8DC); box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      animation: fadeUp 0.4s ease-out; margin-top: 10px; font-size: 14px;
+    }
+    .toast.toast-exit { animation: fadeIn 0.3s ease-out reverse forwards; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #FFD700, #FFF8DC);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sermon-thumbnail {
+      position: relative;
+      overflow: hidden;
+    }
+    .sermon-thumbnail::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,215,0,0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .sermon-thumbnail:hover::after { opacity: 1; }
+
+    .stat-box {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      background: rgba(255,215,0,0.05);
+      border: 1px solid rgba(255,215,0,0.15);
+      transition: all 0.3s;
+    }
+    .stat-box:hover {
+      background: rgba(255,215,0,0.1);
+      border-color: rgba(255,215,0,0.3);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,215,0,0.15);
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+    .card-hover:hover .feature-icon {
+      background: rgba(255,215,0,0.25);
+      transform: scale(1.1);
+    }
+
+    .nav-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: rgba(255,215,0,0.2);
+      color: #FFD700;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 640px) {
+      .hide-mobile { display: none; }
+    }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body" style="background-color: #0F172A; color: #FFFFFF;">
+  <div id="scroll-progress" class="scroll-progress" style="width: 0%;"></div><!-- NAVIGATION -->
+  <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-300" style="background: rgba(15,23,42,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,215,0,0.1);">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-20"><a href="#home" class="flex items-center gap-2 sm:gap-3 group">
+      <div class="flex items-center justify-center w-10 h-10 rounded-lg anim-float" style="background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.05)); border: 2px solid #FFD700;"><span class="text-lg cross-glow">✝</span>
+      </div>
+      <div>
+       <div id="nav-title" class="font-heading text-sm sm:text-lg font-bold" style="color: #FFD700;">
+        Jesus True Will
+       </div>
+       <div class="text-xs opacity-50 hidden sm:block font-accent">
+        Ministry
+       </div>
+      </div></a> <!-- Desktop Nav -->
+     <div class="hidden lg:flex items-center gap-1"><a href="#home" class="nav-link text-sm font-medium opacity-80 hover:opacity-100 transition active px-3" style="color:#FFFFFF;" data-nav="home">Home</a> <a href="#about" class="nav-link text-sm font-medium opacity-80 hover:opacity-100 transition px-3" style="color:#FFFFFF;" data-nav="about">About</a> <a href="#sermons" class="nav-link text-sm font-medium opacity-80 hover:opacity-100 transition px-3" style="color:#FFFFFF;" data-nav="sermons">Sermons</a> <a href="#events" class="nav-link text-sm font-medium opacity-80 hover:opacity-100 transition px-3" style="color:#FFFFFF;" data-nav="events">Events</a> <a href="#devotional" class="nav-link text-sm font-medium opacity-80 hover:opacity-100 transition px-3" style="color:#FFFFFF;" data-nav="devotional">Devotional</a> <a href="#contact" class="nav-link text-sm font-medium opacity-80 hover:opacity-100 transition px-3" style="color:#FFFFFF;" data-nav="contact">Contact</a>
+      <div class="w-px h-6 opacity-20 mx-2" style="background: rgba(255,215,0,0.3);"></div><a href="#give" class="px-6 py-2.5 rounded-full text-sm font-bold transition btn-glow flex items-center gap-2" style="background:linear-gradient(135deg, #FFD700, #FFF8DC); color:#0F172A;"> <i data-lucide="heart" style="width:16px;height:16px;"></i> Give </a>
+     </div><!-- Mobile Menu Toggle --> <button id="mobile-toggle" class="lg:hidden p-2" aria-label="Open menu"> <i data-lucide="menu" style="width:24px;height:24px;color:#FFD700;"></i> </button>
+    </div>
+   </div>
+  </nav><!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu hidden-menu fixed inset-0 z-50 lg:hidden" style="background:linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.95));">
+   <div class="flex flex-col h-full p-6">
+    <div class="flex justify-between items-center mb-10"><span class="text-2xl cross-glow">✝</span> <button id="mobile-close" class="p-2" aria-label="Close menu"> <i data-lucide="x" style="width:24px;height:24px;color:#FFD700;"></i> </button>
+    </div>
+    <div class="flex flex-col gap-2"><a href="#home" class="mobile-nav-link text-lg font-heading py-3 px-4 rounded-lg transition hover:bg-white/5" onclick="closeMobile()">Home</a> <a href="#about" class="mobile-nav-link text-lg font-heading py-3 px-4 rounded-lg transition hover:bg-white/5" onclick="closeMobile()">About Us</a> <a href="#sermons" class="mobile-nav-link text-lg font-heading py-3 px-4 rounded-lg transition hover:bg-white/5" onclick="closeMobile()">Sermons</a> <a href="#events" class="mobile-nav-link text-lg font-heading py-3 px-4 rounded-lg transition hover:bg-white/5" onclick="closeMobile()">Events</a> <a href="#devotional" class="mobile-nav-link text-lg font-heading py-3 px-4 rounded-lg transition hover:bg-white/5" onclick="closeMobile()">Devotional</a> <a href="#contact" class="mobile-nav-link text-lg font-heading py-3 px-4 rounded-lg transition hover:bg-white/5" onclick="closeMobile()">Contact</a>
+     <div class="w-full h-px opacity-10 my-3" style="background: rgba(255,215,0,0.2);"></div><a href="#give" class="text-center py-3 rounded-lg text-lg font-bold transition" style="background:linear-gradient(135deg, #FFD700, #FFF8DC); color:#0F172A;" onclick="closeMobile()">💝 Give / Donate</a>
+    </div>
+    <div class="mt-auto text-center opacity-40 text-sm font-accent">
+     Uthiru, Kenya
+    </div>
+   </div>
+  </div>
+  <main id="app-wrapper" class="w-full h-full overflow-auto"><!-- ===== HERO ===== -->
+   <section id="home" class="relative hero-pattern" style="min-height:100%; display:flex; align-items:center; background: linear-gradient(135deg, #0F172A 0%, #1a1f3a 50%, #0F172A 100%);">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+     <div class="absolute top-20 left-5 w-80 h-80 rounded-full opacity-8" style="background:radial-gradient(circle, #FFD700, transparent);"></div>
+     <div class="absolute -bottom-32 right-0 w-96 h-96 rounded-full opacity-5" style="background:radial-gradient(circle, #FFD700, transparent);"></div>
+     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-3 pointer-events-none" style="background-image: radial-gradient(circle at 30% 40%, rgba(255,215,0,0.1) 0%, transparent 50%);"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 w-full relative z-10">
+     <div class="text-center max-w-4xl mx-auto">
+      <div class="anim-fade-up delay-1 mb-6">
+       <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl pulse-ring" style="background: rgba(255,215,0,0.1); border: 2px solid rgba(255,215,0,0.2);"><span class="text-5xl cross-glow">✝</span>
+       </div>
+      </div>
+      <h1 id="hero-title" class="anim-fade-up delay-2 font-heading text-5xl sm:text-7xl lg:text-8xl font-900 leading-tight mb-4 gold-shimmer">Jesus True Will Ministry</h1>
+      <p id="hero-subtitle" class="anim-fade-up delay-3 text-lg sm:text-2xl opacity-90 mb-8 font-light tracking-wide">Spreading the Love of Christ from Uthiru to the World</p>
+      <blockquote id="hero-verse" class="anim-fade-up delay-4 font-accent italic text-base sm:text-xl mb-12 max-w-2xl mx-auto px-4 py-6 rounded-xl border-l-4" style="color:#FFD700; opacity:0.95; border-color: #FFD700; background: rgba(255,215,0,0.05);">
+       "For God so loved the world that He gave His only begotten Son, that whoever believes in Him shall not perish but have eternal life." — John 3:16
+      </blockquote>
+      <div class="anim-fade-up delay-5 flex flex-wrap justify-center gap-3 sm:gap-4 mb-12"><a href="#sermons" class="flex items-center gap-2 px-6 sm:px-8 py-4 rounded-full font-bold text-sm sm:text-base transition transform hover:scale-105 btn-glow" style="background: linear-gradient(135deg, #FFD700, #FFF8DC); color:#0F172A; box-shadow: 0 8px 24px rgba(255,215,0,0.3);"> <i data-lucide="play-circle" style="width:18px;height:18px;"></i> Watch Sermons </a> <a href="#devotional" class="flex items-center gap-2 px-6 sm:px-8 py-4 rounded-full font-bold text-sm sm:text-base border-2 transition hover:bg-white/10 hover:scale-105" style="border-color:#FFD700; color:#FFD700;"> <i data-lucide="book-open" style="width:18px;height:18px;"></i> Bible Study </a> <a href="#give" class="flex items-center gap-2 px-6 sm:px-8 py-4 rounded-full font-bold text-sm sm:text-base transition hover:bg-white/15 hover:scale-105" style="background:rgba(255,215,0,0.15); color:#FFD700; border: 1px solid rgba(255,215,0,0.3);"> <i data-lucide="heart" style="width:18px;height:18px;"></i> Donate </a>
+      </div><!-- Service Times Bar -->
+      <div class="anim-fade-up delay-7 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+       <div class="text-center p-5 rounded-2xl transition hover:scale-105" style="background:rgba(255,215,0,0.08); border:1px solid rgba(255,215,0,0.2); backdrop-filter: blur(10px);"><i data-lucide="sun" style="width:24px;height:24px;color:#FFD700;margin:0 auto 8px;display:block;"></i>
+        <div id="sunday-service" class="font-bold text-sm" style="color:#FFD700;">
+         Sunday Worship
+        </div>
+        <div class="text-xs opacity-60 mt-1">
+         9:00 AM
+        </div>
+       </div>
+       <div class="text-center p-5 rounded-2xl transition hover:scale-105" style="background:rgba(255,215,0,0.08); border:1px solid rgba(255,215,0,0.2); backdrop-filter: blur(10px);"><i data-lucide="book" style="width:24px;height:24px;color:#FFD700;margin:0 auto 8px;display:block;"></i>
+        <div id="midweek-service" class="font-bold text-sm" style="color:#FFD700;">
+         Wednesday Bible Study
+        </div>
+        <div class="text-xs opacity-60 mt-1">
+         6:00 PM
+        </div>
+       </div>
+       <div class="text-center p-5 rounded-2xl transition hover:scale-105" style="background:rgba(255,215,0,0.08); border:1px solid rgba(255,215,0,0.2); backdrop-filter: blur(10px);"><i data-lucide="flame" style="width:24px;height:24px;color:#FFD700;margin:0 auto 8px;display:block;"></i>
+        <div id="friday-service" class="font-bold text-sm" style="color:#FFD700;">
+         Friday Prayer Night
+        </div>
+        <div class="text-xs opacity-60 mt-1">
+         7:00 PM
+        </div>
+       </div>
+      </div>
+     </div><!-- Scroll indicator -->
+     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 anim-fade-in delay-8"><a href="#about" class="flex flex-col items-center gap-1 opacity-40 hover:opacity-80 transition"> <span class="text-xs font-medium">Scroll to explore</span> <i data-lucide="chevron-down" style="width:20px;height:20px;color:#FFD700; animation: float 2s ease-in-out infinite;"></i> </a>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider"></div><!-- ===== ABOUT ===== -->
+   <section id="about" class="py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-20"><span class="nav-badge">About Our Church</span>
+      <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 mb-2">Our Story &amp; Mission</h2>
+      <div class="flex justify-center gap-8 mt-8">
+       <div class="stat-box">
+        <div class="text-3xl font-heading font-bold gradient-text">
+         10+
+        </div>
+        <div class="text-xs opacity-60 mt-2">
+         Years of Ministry
+        </div>
+       </div>
+       <div class="stat-box">
+        <div class="text-3xl font-heading font-bold gradient-text">
+         500+
+        </div>
+        <div class="text-xs opacity-60 mt-2">
+         Church Members
+        </div>
+       </div>
+       <div class="stat-box">
+        <div class="text-3xl font-heading font-bold gradient-text">
+         ∞
+        </div>
+        <div class="text-xs opacity-60 mt-2">
+         God's Love
+        </div>
+       </div>
+      </div>
+     </div><!-- Pastor Welcome -->
+     <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+      <div class="relative anim-slide-left">
+       <div class="absolute -inset-6 rounded-3xl opacity-20" style="background: linear-gradient(135deg, #FFD700, #0F172A);"></div>
+       <div class="relative aspect-square max-w-md mx-auto rounded-3xl overflow-hidden flex flex-col items-center justify-center p-10 text-center" style="background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(15,23,42,0.9)); border: 2px solid rgba(255,215,0,0.3);">
+        <div class="text-8xl mb-4">
+         🙏
+        </div>
+        <div id="pastor-name-display" class="font-heading text-3xl font-bold" style="color:#FFD700;">
+         Pastor Stanley Kimathi
+        </div>
+        <div class="text-sm opacity-70 mt-2 font-accent">
+         Senior Pastor &amp; Founder
+        </div>
+        <div class="mt-4 text-xs opacity-50 leading-relaxed">
+         Leading with faith, wisdom, and the love of Christ
+        </div>
+       </div>
+      </div>
+      <div class="anim-slide-right"><span class="nav-badge">Pastoral Welcome</span>
+       <h3 class="font-heading text-3xl sm:text-4xl font-bold mt-4 mb-6">Welcome to Our Church Family</h3>
+       <p id="welcome-msg" class="text-base sm:text-lg opacity-85 leading-relaxed mb-6 font-accent">Welcome to Jesus True Will Ministry. We are a Christ-centered community rooted in the Word of God, committed to transforming lives through the Gospel. Whether you are near or far, our doors and hearts are open to you. Come as you are and experience the unfailing love of Jesus Christ.</p>
+       <p class="opacity-70 italic font-accent text-base"><span style="color:#FFD700;">✨ </span>"The Lord has done great things for us, and we are filled with joy." — Psalm 126:3</p>
+       <div class="mt-8 flex gap-4"><a href="#contact" class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm opacity-70 hover:opacity-100 transition" style="border: 1px solid rgba(255,215,0,0.3);"> <i data-lucide="mail" style="width:16px;height:16px;color:#FFD700;"></i> Contact Pastor </a>
+       </div>
+      </div>
+     </div><!-- Mission & Vision -->
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="p-8 rounded-2xl card-hover" style="background:rgba(255,215,0,0.05); border:1px solid rgba(255,215,0,0.15);">
+       <div class="feature-icon"><i data-lucide="target" style="width:24px;height:24px;color:#FFD700;"></i>
+       </div>
+       <h4 class="font-heading text-xl font-bold mb-3" style="color:#FFD700;">Our Mission</h4>
+       <p id="mission-text" class="opacity-75 text-sm leading-relaxed">To spread the Gospel of Jesus Christ, nurture believers in faith, and serve the community with the love and compassion of our Lord and Savior.</p>
+      </div>
+      <div class="p-8 rounded-2xl card-hover" style="background:rgba(255,215,0,0.05); border:1px solid rgba(255,215,0,0.15);">
+       <div class="feature-icon"><i data-lucide="eye" style="width:24px;height:24px;color:#FFD700;"></i>
+       </div>
+       <h4 class="font-heading text-xl font-bold mb-3" style="color:#FFD700;">Our Vision</h4>
+       <p id="vision-text" class="opacity-75 text-sm leading-relaxed">A community transformed by the love of God, walking in truth, and shining as a beacon of hope to Kenya and the nations beyond.</p>
+      </div>
+      <div class="p-8 rounded-2xl card-hover sm:col-span-2 lg:col-span-1" style="background:rgba(255,215,0,0.05); border:1px solid rgba(255,215,0,0.15);">
+       <div class="feature-icon"><i data-lucide="heart-handshake" style="width:24px;height:24px;color:#FFD700;"></i>
+       </div>
+       <h4 class="font-heading text-xl font-bold mb-3" style="color:#FFD700;">Our Values</h4>
+       <p class="opacity-75 text-sm leading-relaxed">Faith in God's Word, Love for all people, Prayer as our foundation, Community in Christ, and Service to those in need.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider"></div><!-- ===== SERMONS ===== -->
+   <section id="sermons" class="py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-20"><span class="nav-badge">Spiritual Growth</span>
+      <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 mb-2">Hear the Word of God</h2>
+      <p class="opacity-60 max-w-2xl mx-auto text-base mt-4">Discover powerful sermons from Pastor Stanley and explore Scripture to deepen your faith.</p>
+     </div><!-- Featured Sermon -->
+     <div class="mb-16 p-6 sm:p-10 rounded-3xl card-hover" style="background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.02)); border:1px solid rgba(255,215,0,0.2);">
+      <div class="flex flex-col lg:flex-row gap-8 items-center">
+       <div class="w-full lg:w-1/2 aspect-video rounded-2xl flex items-center justify-center relative overflow-hidden sermon-thumbnail group" style="background: linear-gradient(135deg, #1a1a2e, #0F172A);">
+        <div class="text-center">
+         <div class="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer transition group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-yellow-500/50" style="background: rgba(255,215,0,0.25); border: 3px solid #FFD700; box-shadow: 0 0 30px rgba(255,215,0,0.3);"><i data-lucide="play" style="width:40px;height:40px;color:#FFD700;margin-left:4px;"></i>
+         </div>
+         <p class="text-sm opacity-60 font-medium">Watch on YouTube</p>
+        </div>
+       </div>
+       <div class="w-full lg:w-1/2"><span class="nav-badge">Latest Sermon</span>
+        <h3 class="font-heading text-3xl sm:text-4xl font-bold mt-4 mb-4">Walking in God's Purpose</h3>
+        <p class="opacity-70 mb-5 text-base leading-relaxed font-accent">Pastor Stanley Kimathi explores what it means to discover and walk in the divine purpose God has laid out for each of us. Learn how faith, obedience, and surrender guide us toward God's perfect plan.</p>
+        <div class="flex flex-wrap items-center gap-6 text-sm opacity-60 mb-6"><span class="flex items-center gap-2"><i data-lucide="calendar" style="width:16px;height:16px;"></i> December 2024</span> <span class="flex items-center gap-2"><i data-lucide="clock" style="width:16px;height:16px;"></i> 45 minutes</span> <span class="flex items-center gap-2"><i data-lucide="users" style="width:16px;height:16px;"></i> 500+ views</span>
+        </div><a href="https://www.youtube.com/@jesustruewillministryuthiru" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-base transition transform hover:scale-105 btn-glow" style="background: linear-gradient(135deg, #FFD700, #FFF8DC); color:#0F172A; box-shadow: 0 8px 24px rgba(255,215,0,0.3);"> <i data-lucide="play" style="width:18px;height:18px;"></i> Watch Now on YouTube </a>
+       </div>
+      </div>
+     </div><!-- Sermon Grid -->
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="rounded-2xl overflow-hidden card-hover group" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,215,0,0.12);">
+       <div class="aspect-video rounded-t-2xl flex items-center justify-center relative overflow-hidden sermon-thumbnail" style="background: linear-gradient(135deg,#1e293b,#0F172A);"><i data-lucide="play-circle" style="width:50px;height:50px;color:#FFD700;opacity:0.6;"></i>
+       </div>
+       <div class="p-6">
+        <h4 class="font-heading font-bold text-lg mb-2">The Power of Faith</h4>
+        <p class="text-xs opacity-50 mb-3 flex items-center gap-1"><i data-lucide="calendar" style="width:12px;height:12px;"></i> Nov 2024 · 38 min</p>
+        <p class="text-sm opacity-70 leading-relaxed">Discover how unwavering faith in God can move mountains in your life and transform your circumstances.</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden card-hover" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,215,0,0.12);">
+       <div class="aspect-video rounded-t-2xl flex items-center justify-center sermon-thumbnail" style="background: linear-gradient(135deg,#1e293b,#0F172A);"><i data-lucide="play-circle" style="width:50px;height:50px;color:#FFD700;opacity:0.6;"></i>
+       </div>
+       <div class="p-6">
+        <h4 class="font-heading font-bold text-lg mb-2">Grace That Transforms</h4>
+        <p class="text-xs opacity-50 mb-3 flex items-center gap-1"><i data-lucide="calendar" style="width:12px;height:12px;"></i> Oct 2024 · 42 min</p>
+        <p class="text-sm opacity-70 leading-relaxed">Understanding the transformative power of God's grace in daily living and spiritual growth.</p>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden card-hover" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,215,0,0.12);">
+       <div class="aspect-video rounded-t-2xl flex items-center justify-center sermon-thumbnail" style="background: linear-gradient(135deg,#1e293b,#0F172A);"><i data-lucide="play-circle" style="width:50px;height:50px;color:#FFD700;opacity:0.6;"></i>
+       </div>
+       <div class="p-6">
+        <h4 class="font-heading font-bold text-lg mb-2">Praying Without Ceasing</h4>
+        <p class="text-xs opacity-50 mb-3 flex items-center gap-1"><i data-lucide="calendar" style="width:12px;height:12px;"></i> Sep 2024 · 35 min</p>
+        <p class="text-sm opacity-70 leading-relaxed">A call to build a powerful prayer life rooted in Scripture and constant communion with God.</p>
+       </div>
+      </div>
+     </div>
+     <div class="text-center mt-12"><a href="https://www.youtube.com/@jesustruewillministryuthiru" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-3 rounded-full border-2 font-bold transition hover:bg-white/5 hover:border-yellow-400" style="border-color:#FFD700; color:#FFD700;"> View All Sermons on YouTube <i data-lucide="external-link" style="width:16px;height:16px;"></i> </a>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider"></div><!-- ===== EVENTS ===== -->
+   <section id="events" class="py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-20"><span class="nav-badge">Community</span>
+      <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 mb-2">Upcoming Gatherings</h2>
+      <p class="opacity-60 max-w-2xl mx-auto text-base mt-4">Join us for worship, prayer, fellowship, and spiritual enrichment.</p>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="rounded-2xl overflow-hidden card-hover" style="background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,215,0,0.01)); border:1px solid rgba(255,215,0,0.15);">
+       <div class="p-6">
+        <div class="h-32 rounded-xl flex items-center justify-center mb-4 text-center" style="background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.05));">
+         <div>
+          <div class="text-5xl font-heading font-bold" style="color:#FFD700;">
+           25
+          </div>
+          <div class="text-sm opacity-70 font-medium mt-1">
+           December
+          </div>
+         </div>
+        </div>
+        <h4 class="font-heading text-xl font-bold mb-3">Christmas Service</h4>
+        <div class="flex items-center gap-2 text-xs opacity-50 mb-4"><i data-lucide="clock" style="width:14px;height:14px;"></i> 8:00 AM — 12:00 PM
+        </div>
+        <p class="text-sm opacity-70 mb-4 leading-relaxed">Celebrate the birth of our Lord Jesus Christ with worship, praise, and fellowship.</p><span class="inline-block px-3 py-1 rounded-full text-xs font-bold" style="background:rgba(255,215,0,0.2); color:#FFD700;">Worship Service</span>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden card-hover" style="background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,215,0,0.01)); border:1px solid rgba(255,215,0,0.15);">
+       <div class="p-6">
+        <div class="h-32 rounded-xl flex items-center justify-center mb-4 text-center" style="background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.05));">
+         <div>
+          <div class="text-5xl font-heading font-bold" style="color:#FFD700;">
+           31
+          </div>
+          <div class="text-sm opacity-70 font-medium mt-1">
+           December
+          </div>
+         </div>
+        </div>
+        <h4 class="font-heading text-xl font-bold mb-3">Crossover Night Service</h4>
+        <div class="flex items-center gap-2 text-xs opacity-50 mb-4"><i data-lucide="clock" style="width:14px;height:14px;"></i> 10:00 PM — 1:00 AM
+        </div>
+        <p class="text-sm opacity-70 mb-4 leading-relaxed">Enter the new year with prayer, praise, and thanksgiving to the Almighty God.</p><span class="inline-block px-3 py-1 rounded-full text-xs font-bold" style="background:rgba(255,215,0,0.2); color:#FFD700;">Prayer Night</span>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden card-hover sm:col-span-2 lg:col-span-1" style="background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,215,0,0.01)); border:1px solid rgba(255,215,0,0.15);">
+       <div class="p-6">
+        <div class="h-32 rounded-xl flex items-center justify-center mb-4 text-center" style="background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.05));">
+         <div>
+          <div class="text-5xl font-heading font-bold" style="color:#FFD700;">
+           12
+          </div>
+          <div class="text-sm opacity-70 font-medium mt-1">
+           January
+          </div>
+         </div>
+        </div>
+        <h4 class="font-heading text-xl font-bold mb-3">Youth Empowerment Rally</h4>
+        <div class="flex items-center gap-2 text-xs opacity-50 mb-4"><i data-lucide="clock" style="width:14px;height:14px;"></i> 2:00 PM — 5:00 PM
+        </div>
+        <p class="text-sm opacity-70 mb-4 leading-relaxed">A special gathering for young people to be empowered and encouraged in their faith.</p><span class="inline-block px-3 py-1 rounded-full text-xs font-bold" style="background:rgba(255,215,0,0.2); color:#FFD700;">Youth Ministry</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider"></div><!-- ===== DEVOTIONAL ===== -->
+   <section id="devotional" class="py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-20"><span class="nav-badge">Daily Bread</span>
+      <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 mb-2">Today's Devotional</h2>
+      <p class="opacity-60 max-w-2xl mx-auto text-base mt-4">Feed your spirit with daily Scripture and encouragement.</p>
+     </div>
+     <div class="max-w-3xl mx-auto"><!-- Verse of the Day -->
+      <div class="p-10 sm:p-14 rounded-3xl text-center mb-10" style="background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,215,0,0.04)); border:2px solid rgba(255,215,0,0.25); backdrop-filter: blur(10px);"><span class="nav-badge inline-block mb-4">Verse of the Day</span>
+       <div class="mt-6 mb-8">
+        <span class="text-6xl">📖</span>
+       </div>
+       <blockquote class="font-accent text-2xl sm:text-3xl italic leading-relaxed mb-8" style="color:#FFD700;">
+        "Trust in the Lord with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths."
+       </blockquote>
+       <p class="text-base opacity-75 font-heading font-bold">— Proverbs 3:5-6 (NKJV)</p>
+      </div><!-- Devotional Content -->
+      <div class="p-8 sm:p-10 rounded-2xl mb-10 card-hover" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,215,0,0.15);">
+       <h3 class="font-heading text-2xl font-bold mb-5" style="color:#FFD700;">Trusting God's Direction</h3>
+       <p class="opacity-80 leading-relaxed mb-5 text-base font-accent">In our daily lives, we often face crossroads where human wisdom falls short. God's Word reminds us that when we surrender our understanding and acknowledge Him in every decision, He faithfully guides our steps. Today, take a moment to release your worries and trust that the Lord is working all things together for your good.</p>
+       <p class="opacity-80 leading-relaxed text-base font-accent">Let this be your prayer: "Lord, I trust You with my whole heart. Lead me in Your truth and teach me, for You are the God of my salvation. Give me wisdom to follow Your path, not my own."</p>
+      </div><!-- Prayer Wall -->
+      <div class="p-8 sm:p-10 rounded-2xl text-center" style="background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.02)); border:2px solid rgba(255,215,0,0.2);">
+       <div class="w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4" style="background: rgba(255,215,0,0.15); border: 2px solid rgba(255,215,0,0.3);"><span class="text-3xl">🙏</span>
+       </div>
+       <h4 class="font-heading text-2xl font-bold mb-3" style="color:#FFD700;">Prayer Wall</h4>
+       <p class="opacity-70 text-base mb-6 max-w-md mx-auto">Share your prayer request and our entire church community will intercede for you.</p>
+       <div class="max-w-md mx-auto"><textarea id="prayer-input" rows="4" placeholder="Write your prayer request here..." class="w-full p-4 rounded-xl text-sm focus:outline-none focus:ring-2 resize-none font-accent" style="background:rgba(15,23,42,0.9); border:1px solid rgba(255,215,0,0.3); color:#FFFFFF; --tw-ring-color:#FFD700;"></textarea> <button onclick="submitPrayer()" class="mt-4 w-full py-3 rounded-full font-bold text-base transition btn-glow" style="background: linear-gradient(135deg, #FFD700, #FFF8DC); color:#0F172A;"> Submit Prayer Request </button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider"></div><!-- ===== TESTIMONIALS ===== -->
+   <section id="testimonials" class="py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-20"><span class="nav-badge">Faith Stories</span>
+      <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 mb-2">God is Faithful</h2>
+      <p class="opacity-60 max-w-2xl mx-auto text-base mt-4">Real stories from our church family that testify to God's faithfulness.</p>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,215,0,0.12);">
+       <div class="flex items-center gap-1 mb-4"><span class="text-lg" style="color:#FFD700;">★★★★★</span>
+       </div>
+       <p class="opacity-75 text-base italic leading-relaxed mb-6 font-accent">"God healed me through the prayers of this church. I came broken, and the love I received here changed my life forever. Praise be to God!"</p>
+       <div class="flex items-center gap-3 pt-4 border-t" style="border-color: rgba(255,215,0,0.1);">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-heading font-bold" style="background:rgba(255,215,0,0.2); color:#FFD700;">
+         M
+        </div>
+        <div>
+         <div class="font-heading font-bold text-sm">
+          Mary W.
+         </div>
+         <div class="text-xs opacity-50 font-accent">
+          Church Member
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,215,0,0.12);">
+       <div class="flex items-center gap-1 mb-4"><span class="text-lg" style="color:#FFD700;">★★★★★</span>
+       </div>
+       <p class="opacity-75 text-base italic leading-relaxed mb-6 font-accent">"Pastor Stanley's teachings have brought me closer to God. The Wednesday Bible Study has become the highlight of my week. God bless this ministry abundantly."</p>
+       <div class="flex items-center gap-3 pt-4 border-t" style="border-color: rgba(255,215,0,0.1);">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-heading font-bold" style="background:rgba(255,215,0,0.2); color:#FFD700;">
+         J
+        </div>
+        <div>
+         <div class="font-heading font-bold text-sm">
+          James K.
+         </div>
+         <div class="text-xs opacity-50 font-accent">
+          Bible Study Member
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="p-7 rounded-2xl card-hover sm:col-span-2 lg:col-span-1" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,215,0,0.12);">
+       <div class="flex items-center gap-1 mb-4"><span class="text-lg" style="color:#FFD700;">★★★★★</span>
+       </div>
+       <p class="opacity-75 text-base italic leading-relaxed mb-6 font-accent">"My family was struggling, but through prayer and support of this church, God restored us. We are living testimonies of His faithfulness and grace."</p>
+       <div class="flex items-center gap-3 pt-4 border-t" style="border-color: rgba(255,215,0,0.1);">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center text-lg font-heading font-bold" style="background:rgba(255,215,0,0.2); color:#FFD700;">
+         G
+        </div>
+        <div>
+         <div class="font-heading font-bold text-sm">
+          Grace N.
+         </div>
+         <div class="text-xs opacity-50 font-accent">
+          Youth Ministry
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider"></div><!-- ===== GIVE ===== -->
+   <section id="give" class="py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-20"><span class="nav-badge">Support The Ministry</span>
+      <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 mb-2">Give / Donate</h2>
+      <p class="opacity-70 max-w-2xl mx-auto text-base mt-4 font-accent italic">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." — 2 Corinthians 9:7</p>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="p-8 rounded-2xl text-center card-hover" style="background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.02)); border:1px solid rgba(255,215,0,0.2);">
+       <div class="text-5xl mb-5">
+        📱
+       </div>
+       <h4 class="font-heading text-xl font-bold mb-3" style="color:#FFD700;">M-Pesa</h4>
+       <p class="opacity-70 text-sm mb-5 leading-relaxed">Send your tithe or offering via M-Pesa to support the ministry work.</p>
+       <div class="p-4 rounded-xl text-sm font-mono font-bold" style="background:rgba(15,23,42,0.8); border:1px solid rgba(255,215,0,0.2); color:#FFD700;">
+        Contact for Details <br><span class="text-xs opacity-60">(Phone number available)</span>
+       </div>
+      </div>
+      <div class="p-8 rounded-2xl text-center card-hover" style="background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.02)); border:1px solid rgba(255,215,0,0.2);">
+       <div class="text-5xl mb-5">
+        🏦
+       </div>
+       <h4 class="font-heading text-xl font-bold mb-3" style="color:#FFD700;">Bank Transfer</h4>
+       <p class="opacity-70 text-sm mb-5 leading-relaxed">Deposit your offering directly to the church bank account.</p>
+       <div class="p-4 rounded-xl text-sm font-mono font-bold" style="background:rgba(15,23,42,0.8); border:1px solid rgba(255,215,0,0.2); color:#FFD700;">
+        Church Account <br><span class="text-xs opacity-60">(Contact church for details)</span>
+       </div>
+      </div>
+      <div class="p-8 rounded-2xl text-center card-hover sm:col-span-2 lg:col-span-1" style="background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.02)); border:1px solid rgba(255,215,0,0.2);">
+       <div class="text-5xl mb-5">
+        🤝
+       </div>
+       <h4 class="font-heading text-xl font-bold mb-3" style="color:#FFD700;">In Person</h4>
+       <p class="opacity-70 text-sm mb-5 leading-relaxed">Visit during service to give your offering in person.</p>
+       <div class="p-4 rounded-xl text-sm font-medium" style="background:rgba(15,23,42,0.8); border:1px solid rgba(255,215,0,0.2); color:#FFD700;"><i data-lucide="map-pin" style="width:16px;height:16px;display:inline;margin-right:6px;"></i> <span id="church-location">Uthiru, Kenya</span>
+       </div>
+      </div>
+     </div>
+     <p class="text-center mt-10 text-sm opacity-50 font-accent">For donation inquiries, please contact us at <span id="donation-phone" style="color:#FFD700;">+254 728 464 285</span></p>
+    </div>
+   </section>
+   <div class="section-divider"></div><!-- ===== CONTACT ===== -->
+   <section id="contact" class="py-20 sm:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-20"><span class="nav-badge">Stay Connected</span>
+      <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 mb-2">Connect With Us</h2>
+      <p class="opacity-60 max-w-2xl mx-auto text-base mt-4">We'd love to hear from you. Reach out with questions, prayer requests, or just to say hello.</p>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-10"><!-- Contact Info -->
+      <div class="space-y-4">
+       <div class="flex items-start gap-4 p-5 rounded-2xl prayer-card transition hover:border-yellow-400" style="border:1px solid rgba(255,215,0,0.15);">
+        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.3);"><i data-lucide="map-pin" style="width:24px;height:24px;color:#FFD700;"></i>
+        </div>
+        <div>
+         <h4 class="font-heading font-bold mb-1" style="color:#FFD700;">Location</h4>
+         <p id="location-text" class="opacity-75 text-sm">Uthiru, Nairobi, Kenya</p>
+        </div>
+       </div><a href="tel:+254728464285" class="flex items-start gap-4 p-5 rounded-2xl prayer-card transition hover:border-yellow-400" style="border:1px solid rgba(255,215,0,0.15); text-decoration:none; color:inherit; display:flex;">
+        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.3);"><i data-lucide="phone" style="width:24px;height:24px;color:#FFD700;"></i>
+        </div>
+        <div>
+         <h4 class="font-heading font-bold mb-1" style="color:#FFD700;">Pastor's Phone</h4>
+         <p id="phone-text" class="opacity-75 text-sm">+254 728 464 285</p>
+        </div></a> <a href="mailto:jesustruewillministrychurch@gmail.com" class="flex items-start gap-4 p-5 rounded-2xl prayer-card transition hover:border-yellow-400" style="border:1px solid rgba(255,215,0,0.15); text-decoration:none; color:inherit; display:flex;">
+        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.3);"><i data-lucide="mail" style="width:24px;height:24px;color:#FFD700;"></i>
+        </div>
+        <div>
+         <h4 class="font-heading font-bold mb-1" style="color:#FFD700;">Email</h4>
+         <p id="email-text" class="opacity-75 text-sm break-all">jesustruewillministrychurch@gmail.com</p>
+        </div></a> <a href="https://www.youtube.com/@jesustruewillministryuthiru" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 p-5 rounded-2xl prayer-card transition hover:border-yellow-400" style="border:1px solid rgba(255,215,0,0.15); text-decoration:none; color:inherit; display:flex;">
+        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.3);"><i data-lucide="youtube" style="width:24px;height:24px;color:#FFD700;"></i>
+        </div>
+        <div>
+         <h4 class="font-heading font-bold mb-1" style="color:#FFD700;">YouTube Channel</h4>
+         <p class="opacity-75 text-sm">@jesustruewillministryuthiru</p>
+        </div></a>
+      </div><!-- Contact Form -->
+      <div class="p-8 sm:p-10 rounded-2xl" style="background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,215,0,0.01)); border:1px solid rgba(255,215,0,0.2);">
+       <h3 class="font-heading text-2xl font-bold mb-6" style="color:#FFD700;">Send us a Message</h3>
+       <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-5">
+        <div><label for="contact-name" class="block text-sm font-medium mb-2 opacity-80 font-heading">Full Name</label> <input type="text" id="contact-name" required placeholder="Your name" class="w-full p-3 rounded-lg text-sm focus:outline-none focus:ring-2 transition" style="background:rgba(15,23,42,0.8); border:1px solid rgba(255,215,0,0.25); color:#FFFFFF; --tw-ring-color:#FFD700;">
+        </div>
+        <div><label for="contact-email" class="block text-sm font-medium mb-2 opacity-80 font-heading">Email</label> <input type="email" id="contact-email" required placeholder="your@email.com" class="w-full p-3 rounded-lg text-sm focus:outline-none focus:ring-2 transition" style="background:rgba(15,23,42,0.8); border:1px solid rgba(255,215,0,0.25); color:#FFFFFF; --tw-ring-color:#FFD700;">
+        </div>
+        <div><label for="contact-subject" class="block text-sm font-medium mb-2 opacity-80 font-heading">Subject</label> <input type="text" id="contact-subject" placeholder="How can we help?" class="w-full p-3 rounded-lg text-sm focus:outline-none focus:ring-2 transition" style="background:rgba(15,23,42,0.8); border:1px solid rgba(255,215,0,0.25); color:#FFFFFF; --tw-ring-color:#FFD700;">
+        </div>
+        <div><label for="contact-message" class="block text-sm font-medium mb-2 opacity-80 font-heading">Message</label> <textarea id="contact-message" rows="5" required placeholder="Write your message..." class="w-full p-3 rounded-lg text-sm focus:outline-none focus:ring-2 resize-none transition" style="background:rgba(15,23,42,0.8); border:1px solid rgba(255,215,0,0.25); color:#FFFFFF; --tw-ring-color:#FFD700;"></textarea>
+        </div><button type="submit" class="w-full py-3 rounded-full font-bold text-base transition btn-glow" style="background: linear-gradient(135deg, #FFD700, #FFF8DC); color:#0F172A;"> Send Message </button>
+       </form>
+       <div id="contact-success" class="hidden mt-5 p-4 rounded-lg text-center text-sm font-bold" style="background:rgba(255,215,0,0.15); color:#FFD700;">
+        ✓ Message sent! We'll get back to you soon. God bless!
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider"></div><!-- ===== NEWSLETTER ===== -->
+   <section id="newsletter" class="py-20 sm:py-28">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+     <div class="p-10 sm:p-16 rounded-3xl" style="background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,215,0,0.03)); border:2px solid rgba(255,215,0,0.25);"><span class="text-4xl mb-4 block">📬</span>
+      <h3 class="font-heading text-3xl sm:text-4xl font-bold mb-4">Stay Connected</h3>
+      <p class="opacity-75 text-base mb-8 max-w-lg mx-auto font-accent">Subscribe to receive weekly devotionals, sermon updates, event announcements, and inspirational messages directly to your inbox.</p>
+      <form id="newsletter-form" onsubmit="handleNewsletterSubmit(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"><label for="newsletter-email" class="sr-only">Email address</label> <input type="email" id="newsletter-email" required placeholder="Enter your email" class="flex-1 p-4 rounded-full text-sm focus:outline-none focus:ring-2 transition" style="background:rgba(15,23,42,0.9); border:1px solid rgba(255,215,0,0.3); color:#FFFFFF; --tw-ring-color:#FFD700;"> <button type="submit" class="px-8 py-4 rounded-full font-bold text-sm transition btn-glow whitespace-nowrap" style="background: linear-gradient(135deg, #FFD700, #FFF8DC); color:#0F172A;"> Subscribe </button>
+      </form>
+      <div id="newsletter-success" class="hidden mt-5 text-sm font-bold" style="color:#FFD700;">
+       ✓ Subscribed! Check your email for confirmation. God bless!
+      </div>
+     </div>
+    </div>
+   </section><!-- ===== FOOTER ===== -->
+   <footer class="py-16" style="border-top:1px solid rgba(255,215,0,0.15); background: linear-gradient(180deg, rgba(15,23,42,0), rgba(15,23,42,0.5));">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+       <div class="flex items-center gap-2 mb-5"><span class="text-2xl cross-glow">✝</span> <span class="font-heading font-bold text-lg" style="color:#FFD700;">JTWM</span>
+       </div>
+       <p class="opacity-60 text-sm leading-relaxed font-accent">Jesus True Will Ministry — A Christ-centered church in Uthiru, Kenya. Transforming lives through the Gospel of Jesus Christ.</p>
+      </div>
+      <div>
+       <h4 class="font-heading font-bold text-sm mb-5" style="color:#FFD700;">Quick Links</h4>
+       <div class="space-y-3"><a href="#home" class="block text-xs opacity-60 hover:opacity-100 transition">Home</a> <a href="#about" class="block text-xs opacity-60 hover:opacity-100 transition">About Us</a> <a href="#sermons" class="block text-xs opacity-60 hover:opacity-100 transition">Sermons</a> <a href="#events" class="block text-xs opacity-60 hover:opacity-100 transition">Events</a>
+       </div>
+      </div>
+      <div>
+       <h4 class="font-heading font-bold text-sm mb-5" style="color:#FFD700;">Resources</h4>
+       <div class="space-y-3"><a href="#devotional" class="block text-xs opacity-60 hover:opacity-100 transition">Devotional</a> <a href="#give" class="block text-xs opacity-60 hover:opacity-100 transition">Give / Donate</a> <a href="#contact" class="block text-xs opacity-60 hover:opacity-100 transition">Contact Us</a> <a href="#testimonials" class="block text-xs opacity-60 hover:opacity-100 transition">Testimonies</a>
+       </div>
+      </div>
+      <div>
+       <h4 class="font-heading font-bold text-sm mb-5" style="color:#FFD700;">Service Times</h4>
+       <div class="space-y-3 text-xs opacity-60 font-accent">
+        <p>☀️ Sunday: 9:00 AM</p>
+        <p>📖 Wednesday: 6:00 PM</p>
+        <p>🔥 Friday: 7:00 PM</p>
+       </div>
+      </div>
+     </div>
+     <div class="pt-10 text-center" style="border-top:1px solid rgba(255,215,0,0.1);">
+      <p class="text-xs opacity-50 mb-2">© 2024 Jesus True Will Ministry Church, Uthiru, Kenya. All rights reserved.</p>
+      <p class="text-xs font-accent italic" style="color:rgba(255,215,0,0.5);">💪 "Jesus Christ is the same yesterday, today, and forever." — Hebrews 13:8</p>
+     </div>
+    </div>
+   </footer>
+  </main><!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+  <script>
+    // ---- DEFAULT CONFIG ----
+    const defaultConfig = {
+      hero_title: 'Jesus True Will Ministry',
+      hero_subtitle: 'Spreading the Love of Christ from Uthiru to the World',
+      hero_verse: '"For God so loved the world that He gave His only begotten Son, that whoever believes in Him shall not perish but have eternal life." — John 3:16',
+      pastor_name: 'Pastor Stanley Kimathi',
+      welcome_message: 'Welcome to Jesus True Will Ministry. We are a Christ-centered community rooted in the Word of God, committed to transforming lives through the Gospel. Whether you are near or far, our doors and hearts are open to you. Come as you are and experience the unfailing love of Jesus Christ.',
+      sunday_service: 'Sunday Worship — 9:00 AM',
+      midweek_service: 'Wednesday Bible Study — 6:00 PM',
+      friday_service: 'Friday Prayer Night — 7:00 PM',
+      mission_statement: 'To spread the Gospel of Jesus Christ, nurture believers in faith, and serve the community with the love and compassion of our Lord and Savior.',
+      vision_statement: 'A community transformed by the love of God, walking in truth, and shining as a beacon of hope to Kenya and the nations beyond.',
+      church_location: 'Uthiru, Nairobi, Kenya',
+      pastor_phone: '+254 728 464 285',
+      church_email: 'jesustruewillministrychurch@gmail.com',
+      background_color: '#0F172A',
+      surface_color: '#FFD700',
+      text_color: '#FFFFFF',
+      primary_action_color: '#FFD700',
+      secondary_action_color: '#B8860B',
+      font_family: 'Playfair Display',
+      font_size: 16
+    };
+
+    // ---- TOAST SYSTEM ----
+    function showToast(message) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.classList.add('toast-exit');
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    // ---- FORM HANDLERS ----
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contact-form').reset();
+      document.getElementById('contact-success').classList.remove('hidden');
+      showToast('Message sent! God bless you! 🙏');
+      setTimeout(() => document.getElementById('contact-success').classList.add('hidden'), 5000);
+    }
+
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      document.getElementById('newsletter-form').reset();
+      document.getElementById('newsletter-success').classList.remove('hidden');
+      showToast('Subscribed successfully! 📬');
+      setTimeout(() => document.getElementById('newsletter-success').classList.add('hidden'), 5000);
+    }
+
+    function submitPrayer() {
+      const input = document.getElementById('prayer-input');
+      if (input.value.trim()) {
+        input.value = '';
+        showToast('Prayer request submitted. We are praying for you! 🙏');
+      }
+    }
+
+    // ---- MOBILE MENU ----
+    function closeMobile() {
+      document.getElementById('mobile-menu').classList.add('hidden-menu');
+      document.getElementById('mobile-menu').classList.remove('show-menu');
+    }
+    document.getElementById('mobile-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.remove('hidden-menu');
+      document.getElementById('mobile-menu').classList.add('show-menu');
+    });
+    document.getElementById('mobile-close').addEventListener('click', closeMobile);
+
+    // ---- ACTIVE NAV ON SCROLL ----
+    const sections = ['home','about','sermons','events','devotional','testimonials','contact'];
+    const wrapper = document.getElementById('app-wrapper');
+
+    wrapper.addEventListener('scroll', () => {
+      const scrollTop = wrapper.scrollTop;
+      const scrollHeight = wrapper.scrollHeight - wrapper.clientHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      document.getElementById('scroll-progress').style.width = progress + '%';
+
+      let current = 'home';
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop - 150 <= scrollTop) current = id;
+      }
+      document.querySelectorAll('.nav-link[data-nav]').forEach(link => {
+        link.classList.toggle('active', link.dataset.nav === current);
+      });
+    });
+
+    // ---- ELEMENT SDK ----
+    function applyConfig(config) {
+      const c = { ...defaultConfig, ...config };
+
+      // Text content updates
+      document.getElementById('hero-title').textContent = c.hero_title;
+      document.getElementById('hero-subtitle').textContent = c.hero_subtitle;
+      document.getElementById('hero-verse').textContent = c.hero_verse;
+      document.getElementById('pastor-name-display').textContent = c.pastor_name;
+      document.getElementById('welcome-msg').textContent = c.welcome_message;
+      document.getElementById('nav-title').textContent = c.hero_title;
+
+      const sundayEl = document.getElementById('sunday-service');
+      const midweekEl = document.getElementById('midweek-service');
+      const fridayEl = document.getElementById('friday-service');
+      if (sundayEl) sundayEl.textContent = c.sunday_service;
+      if (midweekEl) midweekEl.textContent = c.midweek_service;
+      if (fridayEl) fridayEl.textContent = c.friday_service;
+
+      document.getElementById('mission-text').textContent = c.mission_statement;
+      document.getElementById('vision-text').textContent = c.vision_statement;
+      document.getElementById('location-text').textContent = c.church_location;
+      document.getElementById('phone-text').textContent = c.pastor_phone;
+      document.getElementById('email-text').textContent = c.church_email;
+      document.getElementById('church-location').textContent = c.church_location;
+      document.getElementById('donation-phone').textContent = c.pastor_phone;
+
+      // Colors
+      document.body.style.backgroundColor = c.background_color;
+
+      // Apply font
+      const font = c.font_family || defaultConfig.font_family;
+      const baseFontStack = 'Georgia, serif';
+      document.querySelectorAll('.font-heading').forEach(el => {
+        el.style.fontFamily = `${font}, ${baseFontStack}`;
+      });
+
+      // Font size
+      const baseSize = c.font_size || defaultConfig.font_size;
+      document.querySelectorAll('.font-body, body').forEach(el => {
+        el.style.fontSize = `${baseSize}px`;
+      });
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => { applyConfig(config); },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['hero_title', config.hero_title || defaultConfig.hero_title],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['hero_verse', config.hero_verse || defaultConfig.hero_verse],
+          ['pastor_name', config.pastor_name || defaultConfig.pastor_name],
+          ['welcome_message', config.welcome_message || defaultConfig.welcome_message],
+          ['sunday_service', config.sunday_service || defaultConfig.sunday_service],
+          ['midweek_service', config.midweek_service || defaultConfig.midweek_service],
+          ['friday_service', config.friday_service || defaultConfig.friday_service],
+          ['mission_statement', config.mission_statement || defaultConfig.mission_statement],
+          ['vision_statement', config.vision_statement || defaultConfig.vision_statement],
+          ['church_location', config.church_location || defaultConfig.church_location],
+          ['pastor_phone', config.pastor_phone || defaultConfig.pastor_phone],
+          ['church_email', config.church_email || defaultConfig.church_email]
+        ])
+      });
+    }
+
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9dd56f0232648a5f',t:'MTc3MzY4MTY4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  </html>
